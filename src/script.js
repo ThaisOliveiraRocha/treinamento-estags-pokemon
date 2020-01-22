@@ -1,4 +1,15 @@
-loadPokemons().then(loadEvolutions);
+loadPokemons().then(loadEvolutions).then(() => {
+    var items = document.getElementsByClassName("evolutions_item")
+    items = Array.from(items)
+
+    items.forEach((element, index) => {
+        var children = element.children
+        children = Array.from(children)
+        
+        children[0].src = pokemons[index].sprites.front_default
+        children[1].children[1].innerText += pokemons[index].name
+    });
+});
 
 async function loadEvolutions() {
     evolutions = [];
